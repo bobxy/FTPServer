@@ -5,6 +5,7 @@ import javafx.util.converter.ByteStringConverter;
 
 import java.net.Socket;
 import java.io.*;
+import java.nio.Buffer;
 import java.util.Arrays;
 
 
@@ -14,6 +15,7 @@ public class FTPClient {
         Socket socket = new Socket("localhost", 9876);
 
         DataInputStream reader = new DataInputStream(socket.getInputStream());
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         DataOutputStream writer = new DataOutputStream(socket.getOutputStream());
         byte[] packet = new byte[1024];
         reader.read(packet);
